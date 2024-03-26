@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: codechallenge
+  datasource:
+    url: jdbc:postgresql://localhost:5432/challengeDB
+    username: postgres
+    password: postgres
+  liquibase:
+    enabled: true
+    change-log: classpath:migration/db-changelog.xml
+  graphql:
+    graphiql:
+      enabled: true
