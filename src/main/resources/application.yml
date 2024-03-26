@@ -11,3 +11,8 @@ spring:
   graphql:
     graphiql:
       enabled: true
+
+dgs:
+  graphql:
+    schema-locations:
+      - classpath*:graphql/**/*.graphql*

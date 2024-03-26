@@ -31,11 +31,27 @@ input UpdateUserInput {
 }
 
 """
+Class to return the users page
+"""
+type UsersPage {
+	content: [User]!
+	totalPages: Int!
+	totalElements: Int!
+	numberOfElements: Int!
+	size: Int!
+	number: Int!
+	first: Boolean!
+	last: Boolean!
+	empty: Boolean!
+}
+
+"""
 User object queries
 """
 type Query {
 	user(id: ID!): User
 	users: [User]!
+	usersPage(page: Int!, size: Int!): UsersPage!
 }
 
 """

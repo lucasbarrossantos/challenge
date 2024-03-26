@@ -1,11 +1,14 @@
 package com.code.challenge.service;
 
-import com.code.challenge.codegen.types.CreateUserInput;
+import com.code.challenge.api.request.CreateUserInput;
 import com.code.challenge.codegen.types.UpdateUserInput;
 import com.code.challenge.model.User;
 import com.code.challenge.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
+import com.code.challenge.service.exceptions.CustomGraphQLException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +21,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public User createUser(final CreateUserInput input) {
-        User user = new User(input.getName(), input.getEmail());
+        User user = new User(input.name(), input.email());
         return userRepository.save(user);
     }
 
@@ -38,11 +41,14 @@ public class UserService {
 
     public User userById(final UUID id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+                .orElseThrow(() -> new CustomGraphQLException(HttpStatus.NOT_FOUND, "User not found with id: " + id));
     }
 
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
+    public Page<User> findAll(final Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
 }
