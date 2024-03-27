@@ -10,6 +10,7 @@ import org.springframework.graphql.execution.DataFetcherExceptionResolverAdapter
 import org.springframework.graphql.execution.ErrorType;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.BindException;
 
 @Component
 public class CustomGraphQLExceptionHandler extends DataFetcherExceptionResolverAdapter {
@@ -42,6 +43,18 @@ public class CustomGraphQLExceptionHandler extends DataFetcherExceptionResolverA
                             .append(violation.getPropertyPath()).append(": ").append(violation.getMessage()).append("; "));
             String errorMessage = errorMessageBuilder.toString();
 
+            return graphQLError(errorType, new CustomGraphQLException(errorMessage), env);
+        } else if (ex instanceof BindException bindException) {
+            errorType = ErrorType.BAD_REQUEST;
+            StringBuilder errorMessageBuilder = new StringBuilder();
+
+            bindException.getFieldErrors().forEach(error ->
+                    errorMessageBuilder.append(error.getDefaultMessage())
+                            .append(": ").append(error.getRejectedValue())
+                            .append(" to type: ")
+                            .append(error.getObjectName())
+            );
+            String errorMessage = errorMessageBuilder.toString();
             return graphQLError(errorType, new CustomGraphQLException(errorMessage), env);
         }
         else {
