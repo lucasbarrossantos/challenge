@@ -30,5 +30,5 @@ public interface UserApi {
     List<User> users();
 
     @QueryMapping
-    Page<User> usersPage(@Argument int page, @Argument("size") int size);
+    Page<User> usersPage(@Argument int page, @Argument int size);
 }
