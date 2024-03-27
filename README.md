@@ -11,7 +11,7 @@ Or if you are using Java 17 or higher you can execute the command below with gra
 gradle clean build
 ``` 
 
-And then execute:
+And then run the command below in the project root:
 
 ```ssh
 java -jar build/libs/app.war
