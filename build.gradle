@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.code'
-version = '0.0.1-SNAPSHOT'
+archivesBaseName = 'app'
 
 java {
 	sourceCompatibility = '17'

@@ -14,7 +14,7 @@ gradle clean build
 And then execute:
 
 ```ssh
-java -jar build/libs/challenge-0.0.1-SNAPSHOT.war
+java -jar build/libs/app.war
 ```
 
 To carry out the tests there is a collection: `Challenge.postman_collection.json` in the root of the project that can be imported into the postman app
