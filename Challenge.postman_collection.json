@@ -14,7 +14,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  createUser(\n    input: {\n        name: \"Joane Amorim Santos\", \n        email: \"joane.amorim@hotmail.com\"\n    }\n  ) {id name email}\n}",
+						"query": "mutation {\n  createUser(\n    input: {\n        name: \"Lucas Barros\", \n        email: \"lucas.barros@hotmail.com\"\n    }\n  ) {id name email}\n}",
 						"variables": ""
 					}
 				},
@@ -40,7 +40,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateUser(id: \"145ecf17-43f9-489b-9587-ddd6fc8df650\", input: {\n    name: \"Raimundo Neto\",\n    email: \"teste@hotmail.com\"\n  }) {\n    id, \n    name,\n    email\n  }\n}",
+						"query": "mutation {\n  updateUser(id: \"145ecf17-43f9-489b-9587-ddd6fc8df650\", input: {\n    name: \"Lucas Santos\",\n    email: \"lsantos@hotmail.com\"\n  }) {\n    id, \n    name,\n    email\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -118,7 +118,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  usersPage(page: 0, size: 10) {\n    content {\n      id\n      name\n      email\n    }\n    totalPages\n    totalElements\n    numberOfElements\n    size\n    number\n    first\n    last\n    empty\n  }\n}\n",
+						"query": "query {\n\tusers {\n    id,\n    name, \n    email\n  }\n}",
 						"variables": ""
 					}
 				},
